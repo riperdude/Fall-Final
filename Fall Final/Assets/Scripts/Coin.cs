@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private AudioSource _coinAudio;
-
-    void Start()
-    {
-        _coinAudio = GetComponent<AudioSource>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
