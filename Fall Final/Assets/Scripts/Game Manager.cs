@@ -9,16 +9,21 @@ public class GameManager : MonoBehaviour
     public bool isGameActive = false;
 
     public Button replayBotton;
+    public Button startButton;
+    public GameObject coinText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        replayBotton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(true);
+        coinText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        replayBotton.gameObject.SetActive(false);
+       
     }
 
     public void GameOver()
@@ -31,5 +36,14 @@ public class GameManager : MonoBehaviour
     public void PressReplayButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PressStartButton()
+    {
+        isGameActive = true;
+        coinText.SetActive(true);
+        startButton.gameObject.SetActive(false);
+        GameObject.Find("Spawn Manager").GetComponent<SpawnManager>().SpawnCollectableObject();
+        GameObject.Find("Spawn Manager").GetComponent<SpawnManager>().SpawnCollectableObject();
     }
 }
